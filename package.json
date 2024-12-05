@@ -1,0 +1,16 @@
+{
+  "name": "organizai_api_tests",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "chance": "^1.1.12",
+    "cypress": "^13.16.0"
+  }
+}

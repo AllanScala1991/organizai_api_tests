@@ -31,3 +31,22 @@ Cypress.Commands.add('login', () => {
         return response.body.data.token
     })
 })
+
+Cypress.Commands.add('createTask', (userId, token) => {
+    cy.request({
+        method: 'POST',
+        url: '/task',
+        headers: {
+            authorization: `bearer ${token}`
+        },
+        body: {
+            userId: userId,
+            weekDay: 'Domingo',
+            title: 'Fazer almoço',
+            time: '16:00',
+            priority: 'alto'
+        }
+    }).then(response => {
+        return response.body.data.id
+    })
+})

@@ -32,7 +32,7 @@ Cypress.Commands.add('login', () => {
     })
 })
 
-Cypress.Commands.add('createTask', (userId, token) => {
+Cypress.Commands.add('createTask', (userId, token, isDone = false) => {
     cy.request({
         method: 'POST',
         url: '/task',
@@ -44,7 +44,8 @@ Cypress.Commands.add('createTask', (userId, token) => {
             weekDay: 'Domingo',
             title: 'Fazer almoço',
             time: '16:00',
-            priority: 'alto'
+            priority: 'alto',
+            isDone: isDone
         }
     }).then(response => {
         return response.body.data.id

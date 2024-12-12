@@ -1,6 +1,6 @@
 import { Chance } from "chance";
 
-Cypress.Commands.add('createUser', (username = Chance().first()) => {
+Cypress.Commands.add('createUser', (username = Chance().first() + Chance().integer({ min:0, max:999 })) => {
     cy.request({
         method: 'POST',
         url: '/create/user',
@@ -17,7 +17,7 @@ Cypress.Commands.add('createUser', (username = Chance().first()) => {
 })
 
 Cypress.Commands.add('login', () => {
-    let username = Chance().first()
+    let username = Chance().first() + Chance().integer({ min:0, max:999 })
     cy.createUser(username)
     cy.request({
         method: 'POST',

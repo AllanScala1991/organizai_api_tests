@@ -24,7 +24,7 @@ describe('POST /create/user', () => {
             url: '/create/user',
             body: {
                 name: "",
-                username: Chance().first(),
+                username: Chance().first() + Chance().integer({ min:0, max:999 }),
                 password: '123456',
                 photoUrl: 'http://test.com/test.jpg'
             },

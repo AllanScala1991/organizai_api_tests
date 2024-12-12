@@ -51,3 +51,18 @@ Cypress.Commands.add('createTask', (userId, token, isDone = false) => {
         return response.body.data.id
     })
 })
+
+Cypress.Commands.add('followUser', (userId, token) => {
+    cy.createUser().then(res => {
+        let followerId = res.id
+        cy.request({
+            method: 'PUT',
+            url: `/follow/${userId}/${followerId}`,
+            headers: {
+                authorization: `bearer ${token}`
+            }
+        }).then(res => {
+            return followerId
+        })
+    })
+})
